@@ -38,7 +38,14 @@ final class Artikel extends SnelstartObject
     private $omschrijving;
 
     /**
-     * Een container voor atrikel omzet groep informatie.
+     * Een container voor relatie informatie.
+     *
+     * @var Relatie|null
+     */
+    private $relatie;
+
+    /**
+     * Een container voor artikel omzet groep informatie.
      *
      * @var ArtikelOmzetgroep
      */
@@ -94,6 +101,7 @@ final class Artikel extends SnelstartObject
     public static $editableAttributes = [
         "artikelcode",
         "omschrijving",
+        "relatie",
         "artikelOmzetgroep",
         "inkoopprijs",
         "verkoopprijs",
@@ -161,6 +169,18 @@ final class Artikel extends SnelstartObject
         }
 
         $this->omschrijving = $omschrijving;
+
+        return $this;
+    }
+
+    public function getRelatie(): ?Relatie
+    {
+        return $this->relatie;
+    }
+
+    public function setRelatie(Relatie $relatie): self
+    {
+        $this->relatie = $relatie;
 
         return $this;
     }

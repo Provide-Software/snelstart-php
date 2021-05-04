@@ -63,6 +63,10 @@ final class ArtikelMapper extends AbstractMapper
             $artikel->setInkoopprijs($this->getMoney($data["inkoopprijs"]));
         }
 
+        if (isset($data["relatie"])) {
+            $artikel->setRelatie(Relatie::createFromUUID(Uuid::fromString($data["relatie"]["id"])));
+        }
+
         if (isset($data["artikelOmzetgroep"])) {
             $artikel->setArtikelOmzetgroep(ArtikelOmzetgroep::createFromUUID(Uuid::fromString($data["artikelOmzetgroep"]["id"])));
         }
