@@ -74,14 +74,14 @@ final class Artikel extends SnelstartObject
     /**
      * Een vlag dat aangeeft of een artikel niet meer actief is binnen de administratie.
      *
-     * @var bool
+     * @var bool|null
      */
     private $isNonActief;
 
     /**
      * Een vlag dat aangeeft of voor een artikel wel of geen voorraad wordt bijgehouden.
      *
-     * @var bool
+     * @var bool|null
      */
     private $voorraadControle;
 
@@ -221,9 +221,9 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function getIsNonActief(): ?bool
+    public function getIsNonActief(): bool
     {
-        return $this->isNonActief;
+        return (bool)$this->isNonActief;
     }
 
     public function setIsNonActief(bool $isNonActief): self
@@ -233,9 +233,9 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function isVoorraadControle(): ?bool
+    public function isVoorraadControle(): bool
     {
-        return $this->voorraadControle;
+        return (bool)$this->voorraadControle;
     }
 
     public function setVoorraadControle(bool $voorraadControle): self
