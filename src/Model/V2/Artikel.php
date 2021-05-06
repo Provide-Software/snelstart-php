@@ -221,7 +221,7 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function isNonActief(): ?bool
+    public function getIsNonActief(): ?bool
     {
         return $this->isNonActief;
     }
