@@ -8,6 +8,7 @@ namespace SnelstartPHP\Connector\V2;
 
 use Ramsey\Uuid\UuidInterface;
 use SnelstartPHP\Connector\BaseConnector;
+use SnelstartPHP\Exception\PreValidationException;
 use SnelstartPHP\Exception\SnelstartResourceNotFoundException;
 use SnelstartPHP\Mapper\V2 as Mapper;
 use SnelstartPHP\Model\V2 as Model;
@@ -55,5 +56,29 @@ final class ArtikelConnector extends BaseConnector
         }
 
         return $iterator;
+    }
+
+    public function add(Model\Artikel $artikel): Model\Artikel
+    {
+        if ($artikel->getId() !== null) {
+            throw PreValidationException::unexpectedIdException();
+        }
+
+        $mapper = new Mapper\ArtikelMapper();
+        $request = new Request\ArtikelRequest();
+
+        return $mapper->add($this->connection->doRequest($request->add($artikel)));
+    }
+
+    public function update(Model\Artikel $artikel): Model\Artikel
+    {
+        if ($artikel->getId() === null) {
+            throw PreValidationException::shouldHaveAnIdException();
+        }
+
+        $mapper = new Mapper\ArtikelMapper();
+        $request = new Request\ArtikelRequest();
+
+        return $mapper->update($this->connection->doRequest($request->update($artikel)));
     }
 }
