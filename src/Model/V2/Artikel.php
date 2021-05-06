@@ -28,7 +28,7 @@ final class Artikel extends SnelstartObject
     private $prijsafspraak;
 
     /**
-     * @var string
+     * @var int
      */
     private $artikelcode;
 
@@ -145,12 +145,12 @@ final class Artikel extends SnelstartObject
         return $this;
     }
 
-    public function getArtikelcode(): string
+    public function getArtikelcode(): int
     {
         return $this->artikelcode;
     }
 
-    public function setArtikelcode(string $artikelcode): self
+    public function setArtikelcode(int $artikelcode): self
     {
         $this->artikelcode = $artikelcode;
 
