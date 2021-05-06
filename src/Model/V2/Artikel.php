@@ -62,7 +62,7 @@ final class Artikel extends SnelstartObject
     private $verkoopprijs;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $eenheid;
 
@@ -284,7 +284,7 @@ final class Artikel extends SnelstartObject
     /**
      * @return string
      */
-    public function getEenheid(): string
+    public function getEenheid(): ?string
     {
         return $this->eenheid;
     }
